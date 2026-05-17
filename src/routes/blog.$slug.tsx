@@ -50,7 +50,7 @@ function Post() {
         <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{post.title}</h1>
         <p className="mt-5 text-lg text-muted-foreground">{post.excerpt}</p>
         <div className="prose-zinc mt-10 space-y-5 text-base leading-relaxed text-foreground">
-          {post.body.map((para, i) => (
+          {post.body.map((para: string, i: number) => (
             <p key={i}>{para}</p>
           ))}
         </div>
