@@ -72,16 +72,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Professional Czech website for roofing and sheet metal services in Prague." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Professional Czech website for roofing and sheet metal services in Prague." },
+      { title: "Jan Žížala — Klempířství a pokrývačství" },
+      { name: "description", content: "Spolehlivé klempířské a pokrývačské práce v Praze a okolí. Pokládka a opravy střech, okapy, zateplení." },
+      { name: "author", content: "Jan Žížala" },
+      { property: "og:title", content: "Jan Žížala — Klempířství a pokrývačství" },
+      { property: "og:description", content: "Spolehlivé klempířské a pokrývačské práce v Praze a okolí." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Professional Czech website for roofing and sheet metal services in Prague." },
+      { name: "twitter:title", content: "Jan Žížala — Klempířství a pokrývačství" },
+      { name: "twitter:description", content: "Spolehlivé klempířské a pokrývačské práce v Praze a okolí." },
     ],
     links: [
       {
