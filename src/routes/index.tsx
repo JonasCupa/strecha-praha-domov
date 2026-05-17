@@ -30,6 +30,31 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Pokrývačské a klempířské práce v Praze a okolí. Rychle, kvalitně, férově.",
       },
+      { property: "og:url", content: "https://strecha-praha-domov.lovable.app/" },
+      { property: "og:image", content: "https://strecha-praha-domov.lovable.app/og-image.jpg" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://strecha-praha-domov.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "RoofingContractor",
+          name: "Jan Žížala — Klempířské a pokrývačské práce",
+          telephone: "+420603720337",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Podvinný mlýn 2117",
+            addressLocality: "Praha",
+            addressCountry: "CZ",
+          },
+          areaServed: "Praha",
+          openingHours: "Mo-Sa 07:00-19:00",
+          url: "https://strecha-praha-domov.lovable.app/",
+        }),
+      },
     ],
   }),
   component: Index,
