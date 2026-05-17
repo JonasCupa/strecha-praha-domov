@@ -4,4 +4,10 @@
 
 ## Pages
 
-- [Home](/): Services overview, about Jan Žížala, and contact form.
+- [Úvod](/): Overview of services, gallery teaser, calls to action.
+- [Galerie](/galerie): Photo gallery of completed roofing and sheet metal projects.
+- [Reference](/reference): Customer testimonials and reviews.
+- [Blog / Rady](/blog): Practical articles about roofs, gutters, and maintenance.
+- [O mně](/o-mne): About Jan Žížala — background and experience.
+- [FAQ](/faq): Answers to common questions about pricing, warranty, materials.
+- [Kontakt](/kontakt): Phone, address, contact form.
