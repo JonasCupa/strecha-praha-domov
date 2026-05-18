@@ -24,27 +24,24 @@ export const Route = createFileRoute("/reference")({
 
 const reviews = [
   {
-    name: "Petr K.",
-    location: "Praha 6",
-    text: "Pan Žížala přijel do dvou dnů, vyřešil zatékání u komína a vše vysvětlil. Profesionál.",
+    name: "Michou",
+    location: "Hodnocení na Mapy.cz",
+    date: "3. září 2015",
+    text: "Velmi příjemná komunikace a ochota, domluven termín a čas montáže, firma dojela přesně na čas a montáž trvala přesně předem odhadnutou dobu. Odvedli profesionální práci s připraveným profi nářadím i čistým firemním oblečením, ukázková práce, děkuji!",
     rating: 5,
   },
   {
-    name: "Marie S.",
-    location: "Praha 9",
-    text: "Kompletní výměna okapů na rodinném domě. Čistá práce, dohodnutý termín i cena.",
+    name: "Radek Soběslavský",
+    location: "Hodnocení na Mapy.cz",
+    date: "23. října 2024",
+    text: "Termíny, kvalita, komunikace — vše v pořádku. Doporučuji.",
     rating: 5,
   },
   {
-    name: "Tomáš H.",
-    location: "Praha-západ",
-    text: "Pokládka nové plechové střechy. Vše perfektní, doporučuji.",
-    rating: 5,
-  },
-  {
-    name: "Jana N.",
-    location: "Praha 4",
-    text: "Drobná oprava po vichřici. Rychle, ochotně a za rozumnou cenu.",
+    name: "Jaroslav Kvasnička",
+    location: "Hodnocení na Mapy.cz",
+    date: "23. listopadu 2024",
+    text: "Spokojenost s cenou, termíny, kvalitou i komunikací.",
     rating: 5,
   },
 ];
@@ -59,8 +56,16 @@ function Reference() {
           </span>
           <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Reference</h1>
           <p className="mt-4 text-muted-foreground">
-            Vážíme si každé doporučení. Níže najdete vybrané reakce zákazníků.
+            Reálná hodnocení zákazníků z Firmy.cz a Mapy.cz. Děkuji za každé doporučení.
           </p>
+          <a
+            href="https://www.firmy.cz/detail/405017-jan-zizala-praha-liben.html#hodnoceni"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex text-sm font-semibold text-accent hover:underline"
+          >
+            Zobrazit hodnocení na Firmy.cz →
+          </a>
         </header>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
@@ -77,7 +82,9 @@ function Reference() {
               </div>
               <p className="mt-4 text-base text-card-foreground">„{r.text}"</p>
               <div className="mt-6 text-sm font-semibold text-foreground">{r.name}</div>
-              <div className="text-xs text-muted-foreground">{r.location}</div>
+              <div className="text-xs text-muted-foreground">
+                {r.location} · {r.date}
+              </div>
             </article>
           ))}
         </div>

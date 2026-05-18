@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, MapPin, Clock, BadgeCheck, Hammer, Users } from "lucide-react";
+import { Phone, MapPin, Clock, BadgeCheck, Hammer, MapPinned } from "lucide-react";
 import heroImage from "@/assets/hero-roof.jpg";
 import { ADDRESS, HOURS, PHONE_DISPLAY, PHONE_TEL, BASE_URL } from "@/lib/site";
 
@@ -10,12 +10,12 @@ export const Route = createFileRoute("/o-mne")({
       {
         name: "description",
         content:
-          "Jan Žížala — pokrývač a klempíř s mnohaletou praxí. Pracuji v Praze a okolí, osobně a poctivě.",
+          "Jan Žížala — OSVČ, klempířské, pokrývačské a výškové práce v Praze a Středočeském kraji. IČO 43656579.",
       },
       { property: "og:title", content: "O mně — Jan Žížala" },
       {
         property: "og:description",
-        content: "Řemeslník s mnohaletou praxí. Praha a Středočeský kraj.",
+        content: "Klempířské, pokrývačské a výškové práce. Praha a Středočeský kraj.",
       },
       { property: "og:url", content: `${BASE_URL}/o-mne` },
     ],
@@ -25,9 +25,9 @@ export const Route = createFileRoute("/o-mne")({
 });
 
 const facts = [
-  { icon: Hammer, label: "15+ let praxe" },
-  { icon: Users, label: "Stovky spokojených zákazníků" },
-  { icon: BadgeCheck, label: "Pojištění odpovědnosti" },
+  { icon: Hammer, label: "Klempířství · pokrývačství · výšky" },
+  { icon: MapPinned, label: "Praha a Středočeský kraj" },
+  { icon: BadgeCheck, label: "IČO 43656579" },
 ];
 
 function OMne() {
@@ -43,24 +43,22 @@ function OMne() {
               Jan Žížala
             </h1>
             <p className="mt-4 text-lg font-medium text-muted-foreground">
-              Pokrývač a klempíř z Prahy
+              Klempířské, pokrývačské a výškové práce
             </p>
 
             <div className="mt-8 space-y-4 text-base leading-relaxed text-foreground/90">
               <p>
-                Klempířině a pokrývačské práci se věnuji víc než patnáct let. Začínal jsem
-                jako učeň u zkušeného mistra na Vysočině, dnes pracuji jako OSVČ po celé
-                Praze a okolí.
+                Provádím pokrývačské, klempířské a výškové práce. Montuji střešní krytinu
+                a střešní okna VELUX a ROTO včetně příslušenství.
               </p>
               <p>
-                Ke každé zakázce přistupuji osobně. Když přijedu, podívám se na celou
-                střechu, vysvětlím vám, co je v pořádku a co je potřeba řešit hned — a co
-                může počkat. Nikdy nikoho do ničeho netlačím.
+                Dále nabízím rizikové kácení stromů, nátěry fasád i ocelových konstrukcí,
+                montážní práce ve výškách za pomocí horolezecké techniky a zabezpečení
+                proti hnízdění holubů.
               </p>
               <p>
-                Pracuji s ověřenými značkami (Lindab, Ruukki, Bramac, Tondach), používám
-                pojištění odpovědnosti a jistím se při všech výškových pracích. Na
-                odvedenou práci si stojím.
+                Oblastí působnosti je především Praha a Středočeský kraj, po dohodě
+                pracuji i mimo region.
               </p>
             </div>
 
@@ -70,7 +68,7 @@ function OMne() {
                   key={f.label}
                   className="flex items-center gap-3 rounded-md border border-border bg-card p-4"
                 >
-                  <f.icon className="h-5 w-5 text-accent" />
+                  <f.icon className="h-5 w-5 shrink-0 text-accent" />
                   <span className="text-sm font-medium">{f.label}</span>
                 </div>
               ))}
@@ -104,7 +102,7 @@ function OMne() {
         <div className="relative min-h-[300px] lg:min-h-0">
           <img
             src={heroImage}
-            alt="Jan Žížala při práci"
+            alt="Jan Žížala — klempířské a pokrývačské práce"
             width={1920}
             height={1280}
             loading="lazy"
