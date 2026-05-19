@@ -3,7 +3,7 @@ import {
   Phone,
   Hammer,
   Wrench,
-  Home,
+  Sun,
   CloudRain,
   Thermometer,
   Mountain,
@@ -14,24 +14,28 @@ import {
   ArrowRight,
 } from "lucide-react";
 import heroImage from "@/assets/hero-roof.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
 import { PHONE_DISPLAY, PHONE_TEL, BASE_URL } from "@/lib/site";
+
+const imageModules = import.meta.glob("/src/assets/gallery/*.{JPG,jpg}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+const galleryImages = Object.values(imageModules);
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Jan Žížala — Klempířské a pokrývačské práce Praha" },
+      { title: "Jan Žížala — Střešní okna VELUX Praha" },
       {
         name: "description",
         content:
-          "Spolehlivé klempířské a pokrývačské práce v Praze. Pokládka a opravy střech, okapy, zateplení. Rychlý příjezd, férová cena. Volejte +420 603 720 337.",
+          "Montáž a výměna střešních oken VELUX v Praze. Pokrývačské a klempířské práce, opravy střech. Rychlý příjezd, férová cena. Volejte +420 603 720 337.",
       },
-      { property: "og:title", content: "Jan Žížala — Klempířské a pokrývačské práce Praha" },
+      { property: "og:title", content: "Jan Žížala — Střešní okna VELUX Praha" },
       {
         property: "og:description",
-        content: "Pokrývačské a klempířské práce v Praze a okolí. Rychle, kvalitně, férově.",
+        content:
+          "Montáž střešních oken VELUX, pokrývačské a klempířské práce v Praze a okolí.",
       },
       { property: "og:url", content: `${BASE_URL}/` },
     ],
@@ -42,7 +46,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "RoofingContractor",
-          name: "Jan Žížala — Klempířské a pokrývačské práce",
+          name: "Jan Žížala — Střešní okna VELUX Praha",
           telephone: "+420603720337",
           address: {
             "@type": "PostalAddress",
@@ -61,12 +65,36 @@ export const Route = createFileRoute("/")({
 });
 
 const services = [
-  { icon: Home, title: "Pokládka střech", desc: "Nové střechy z plechu, tašek i šindele." },
-  { icon: Wrench, title: "Opravy střech", desc: "Lokální opravy, výměna prvků, řešení zatékání." },
-  { icon: Hammer, title: "Klempířské práce", desc: "Oplechování, lemování, parapety, atiky." },
-  { icon: CloudRain, title: "Okapové systémy", desc: "Montáž, čištění a opravy okapů a svodů." },
-  { icon: Thermometer, title: "Zateplení střech", desc: "Zateplení podkroví a střešních konstrukcí." },
-  { icon: Mountain, title: "Výškové práce", desc: "Práce ve výškách s jištěním a plošinou." },
+  {
+    icon: Sun,
+    title: "Střešní okna VELUX",
+    desc: "Montáž, výměna a příslušenství střešních oken VELUX a ROTO.",
+  },
+  {
+    icon: Wrench,
+    title: "Opravy střech",
+    desc: "Lokální opravy, výměna prvků, řešení zatékání.",
+  },
+  {
+    icon: Hammer,
+    title: "Klempířské práce",
+    desc: "Oplechování, lemování, parapety, atiky.",
+  },
+  {
+    icon: CloudRain,
+    title: "Okapové systémy",
+    desc: "Montáž, čištění a opravy okapů a svodů.",
+  },
+  {
+    icon: Thermometer,
+    title: "Zateplení střech",
+    desc: "Zateplení podkroví a střešních konstrukcí.",
+  },
+  {
+    icon: Mountain,
+    title: "Výškové práce",
+    desc: "Práce ve výškách s jištěním a plošinou.",
+  },
 ];
 
 const benefits = [
@@ -82,7 +110,7 @@ function Index() {
       <section className="relative flex min-h-[88svh] items-center">
         <img
           src={heroImage}
-          alt="Pokrývačské práce na střeše v Praze"
+          alt="Montáž střešních oken VELUX v Praze"
           width={1920}
           height={1280}
           className="absolute inset-0 h-full w-full object-cover"
@@ -98,10 +126,11 @@ function Index() {
               <MapPin className="h-3 w-3" /> Praha a okolí
             </span>
             <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl">
-              Spolehlivé klempířské a pokrývačské práce v Praze
+              Montáž střešních oken VELUX a pokrývačské práce v Praze
             </h1>
             <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-              Rychlé řešení, kvalitní materiály, férová cena.
+              Specializujeme se na střešní okna VELUX — montáž, výměna, příslušenství. Také
+              pokrývačské a klempířské práce. Rychle, kvalitně, férově.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -187,7 +216,7 @@ function Index() {
             </Link>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {[gallery1, gallery2, gallery3].map((src, i) => (
+            {galleryImages.slice(0, 3).map((src, i) => (
               <div key={i} className="aspect-[4/3] overflow-hidden rounded-lg bg-card">
                 <img
                   src={src}
@@ -201,7 +230,10 @@ function Index() {
             ))}
           </div>
           <div className="mt-6 sm:hidden">
-            <Link to="/galerie" className="inline-flex items-center gap-2 text-sm font-semibold text-accent">
+            <Link
+              to="/galerie"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-accent"
+            >
               Celá galerie <ArrowRight className="h-4 w-4" />
             </Link>
           </div>

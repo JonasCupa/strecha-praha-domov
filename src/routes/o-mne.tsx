@@ -6,16 +6,16 @@ import { ADDRESS, HOURS, PHONE_DISPLAY, PHONE_TEL, BASE_URL } from "@/lib/site";
 export const Route = createFileRoute("/o-mne")({
   head: () => ({
     meta: [
-      { title: "O mně — Jan Žížala, klempíř a pokrývač Praha" },
+      { title: "O mně — Jan Žížala, střešní okna VELUX Praha" },
       {
         name: "description",
         content:
-          "Jan Žížala — OSVČ, klempířské, pokrývačské a výškové práce v Praze a Středočeském kraji. IČO 43656579.",
+          "Jan Žížala — OSVČ, montáž střešních oken VELUX, pokrývačské a výškové práce v Praze a Středočeském kraji. IČO 43656579.",
       },
       { property: "og:title", content: "O mně — Jan Žížala" },
       {
         property: "og:description",
-        content: "Klempířské, pokrývačské a výškové práce. Praha a Středočeský kraj.",
+        content: "Střešní okna VELUX, pokrývačské a výškové práce. Praha a Středočeský kraj.",
       },
       { property: "og:url", content: `${BASE_URL}/o-mne` },
     ],
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/o-mne")({
 });
 
 const facts = [
-  { icon: Hammer, label: "Klempířství · pokrývačství · výšky" },
+  { icon: Hammer, label: "Střešní okna VELUX · pokrývačství" },
   { icon: MapPinned, label: "Praha a Středočeský kraj" },
   { icon: BadgeCheck, label: "IČO 43656579" },
 ];
@@ -43,7 +43,7 @@ function OMne() {
               Jan Žížala
             </h1>
             <p className="mt-4 text-lg font-medium text-muted-foreground">
-              Klempířské, pokrývačské a výškové práce
+              Střešní okna VELUX, pokrývačství a výškové práce
             </p>
 
             <div className="mt-8 space-y-4 text-base leading-relaxed text-foreground/90">

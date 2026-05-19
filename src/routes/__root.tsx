@@ -74,15 +74,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Jan Žížala — Klempířství a pokrývačství" },
-      { name: "description", content: "Spolehlivé klempířské a pokrývačské práce v Praze a okolí. Pokládka a opravy střech, okapy, zateplení." },
+      { title: "Jan Žížala — Střešní okna VELUX Praha" },
+      { name: "description", content: "Montáž a výměna střešních oken VELUX v Praze a okolí. Pokrývačské a klempířské práce, opravy střech. Rychlý příjezd, férová cena." },
       { name: "author", content: "Jan Žížala" },
-      { property: "og:title", content: "Jan Žížala — Klempířství a pokrývačství" },
-      { property: "og:description", content: "Spolehlivé klempířské a pokrývačské práce v Praze a okolí." },
+      { property: "og:title", content: "Jan Žížala — Střešní okna VELUX Praha" },
+      { property: "og:description", content: "Montáž střešních oken VELUX, pokrývačské a klempířské práce v Praze a okolí." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Jan Žížala — Klempířství a pokrývačství" },
-      { name: "twitter:description", content: "Spolehlivé klempířské a pokrývačské práce v Praze a okolí." },
+      { name: "twitter:title", content: "Jan Žížala — Střešní okna VELUX Praha" },
+      { name: "twitter:description", content: "Montáž střešních oken VELUX, pokrývačské a klempířské práce v Praze a okolí." },
     ],
     links: [
       {
