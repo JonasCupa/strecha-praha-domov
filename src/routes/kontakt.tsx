@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { Phone, MapPin, Clock, Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { ADDRESS, HOURS, PHONE_DISPLAY, PHONE_TEL, BASE_URL } from "@/lib/site";
-import { submitContact } from "@/lib/contact.functions";
 
 export const Route = createFileRoute("/kontakt")({
   head: () => ({
@@ -29,7 +27,6 @@ export const Route = createFileRoute("/kontakt")({
 type Status = "idle" | "submitting" | "ok" | "error";
 
 function Kontakt() {
-  const send = useServerFn(submitContact);
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
@@ -39,13 +36,19 @@ function Kontakt() {
     setStatus("submitting");
     setError(null);
     try {
-      await send({
-        data: {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
           name: form.name.trim(),
           phone: form.phone.trim(),
           message: form.message.trim(),
-        },
+        }),
       });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error((data as { error?: string }).error ?? "Nepodařilo se odeslat zprávu.");
+      }
       setStatus("ok");
       setForm({ name: "", phone: "", message: "" });
     } catch (err) {
