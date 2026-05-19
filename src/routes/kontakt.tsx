@@ -36,19 +36,21 @@ function Kontakt() {
     setStatus("submitting");
     setError(null);
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          access_key: "REPLACE_WITH_WEB3FORMS_KEY",
+          subject: `Nová poptávka — ${form.name.trim()}`,
           name: form.name.trim(),
           phone: form.phone.trim(),
           message: form.message.trim(),
+          from_name: "Web zizalajan",
+          botcheck: "",
         }),
       });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error((data as { error?: string }).error ?? "Nepodařilo se odeslat zprávu.");
-      }
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message ?? "Nepodařilo se odeslat zprávu.");
       setStatus("ok");
       setForm({ name: "", phone: "", message: "" });
     } catch (err) {
