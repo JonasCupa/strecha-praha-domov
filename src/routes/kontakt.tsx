@@ -40,7 +40,7 @@ function Kontakt() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "REPLACE_WITH_WEB3FORMS_KEY",
+          access_key: "490506d6-4e3c-439a-889d-249b9cec5ceb",
           subject: `Nová poptávka — ${form.name.trim()}`,
           name: form.name.trim(),
           phone: form.phone.trim(),
