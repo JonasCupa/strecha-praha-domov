@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://strecha-praha-domov.lovable.app/sitemap.xml
+Sitemap: https://stresnioknazizala.cz/sitemap.xml
