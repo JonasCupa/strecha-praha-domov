@@ -14,6 +14,8 @@ export default defineConfig({
     server: { entry: "server" },
     pages: [
       { path: "/", prerender: { enabled: true, crawlLinks: true } },
+      // Static sitemap for crawlers (the server route is not crawled from page links).
+      { path: "/sitemap.xml", prerender: { enabled: true, crawlLinks: false } },
     ],
   },
 });
