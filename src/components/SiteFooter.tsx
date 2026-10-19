@@ -45,6 +45,7 @@ export function SiteFooter() {
       </div>
       <div className="mx-auto mt-10 max-w-6xl border-t border-border px-5 pt-6 text-xs text-muted-foreground">
         © {new Date().getFullYear()} {SITE_NAME}. Všechna práva vyhrazena.
+        <span className="mt-2 block">Návštěvnost webu měříme anonymně službou Vercel Web Analytics – bez cookies, bez ukládání IP adres a bez sledování napříč weby.</span>
       </div>
     </footer>
   );

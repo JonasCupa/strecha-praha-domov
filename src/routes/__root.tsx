@@ -102,6 +102,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Vercel Web Analytics, bez cookies (Flowsync 19. 10. 2026) */}
+        <script dangerouslySetInnerHTML={{ __html: "window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};" }} />
+        <script defer src="/_vercel/insights/script.js" />
       </head>
       <body>
         {children}
