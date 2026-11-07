@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { sendFlowsyncForm } from "@/lib/flowsyncForm";
 import { useState } from "react";
 import { Phone, MapPin, Clock, Mail, Loader2, CheckCircle2 } from "lucide-react";
 import { ADDRESS, HOURS, PHONE_DISPLAY, PHONE_TEL, BASE_URL } from "@/lib/site";
@@ -33,31 +34,22 @@ function Kontakt() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "submitting") return;
     setStatus("submitting");
     setError(null);
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "490506d6-4e3c-439a-889d-249b9cec5ceb",
-          subject: `Nová poptávka — ${form.name.trim()}`,
-          name: form.name.trim(),
-          phone: form.phone.trim(),
-          message: form.message.trim(),
-          from_name: "Web zizalajan",
-          botcheck: "",
-        }),
-      });
-      const data = await res.json();
-      if (!data.success) throw new Error(data.message ?? "Nepodařilo se odeslat zprávu.");
+    const website = ((e.currentTarget as HTMLFormElement).querySelector('input[name="website"]') as HTMLInputElement | null)?.value || "";
+    const r = await sendFlowsyncForm("zizala", {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      message: form.message.trim(),
+      website,
+    });
+    if (r.ok) {
       setStatus("ok");
       setForm({ name: "", phone: "", message: "" });
-    } catch (err) {
+    } else {
       setStatus("error");
-      setError(
-        err instanceof Error ? err.message : "Něco se nepovedlo. Zkuste to znovu, nebo zavolejte.",
-      );
+      setError(r.message || "Něco se nepovedlo. Zkuste to znovu, nebo zavolejte.");
     }
   };
 
@@ -115,6 +107,7 @@ function Kontakt() {
             onSubmit={onSubmit}
             className="rounded-lg border border-border bg-card p-7 sm:p-9"
           >
+            <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-px w-px opacity-0" />
             <h2 className="text-xl font-semibold">Nezávazná poptávka</h2>
             <p className="mt-1 text-sm text-muted-foreground">
               Vyplňte krátký formulář, ozveme se vám obratem.
@@ -179,7 +172,7 @@ function Kontakt() {
               <div className="mt-5 flex items-start gap-3 rounded-md border border-accent/30 bg-accent/10 p-4 text-sm text-foreground">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <div>
-                  <div className="font-semibold">Děkujeme, zprávu jsme přijali.</div>
+                  <div className="font-semibold">Děkujeme, zpráva byla odeslána.</div>
                   <div className="mt-1 text-muted-foreground">
                     Ozveme se vám co nejdříve. Pokud spěcháte, zavolejte na {PHONE_DISPLAY}.
                   </div>
@@ -191,6 +184,10 @@ function Kontakt() {
                 {error}
               </div>
             )}
+            <p className="mt-4 text-xs text-muted-foreground">
+              Údaje použijeme jen k vyřízení poptávky. Zpráva se doručí e-mailem přímo nám; technicky ji předává
+              správce webu Flowsync přes e-mailovou službu Resend.
+            </p>
           </form>
         </div>
       </div>
